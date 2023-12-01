@@ -1,0 +1,67 @@
+apply plugin: 'com.android.library'
+
+ext {
+    demoDir = 'demo/'
+    javaDocPath = project.buildDir.absolutePath + '/docs/javadoc/'
+    destPath = project.rootDir.getAbsolutePath() + "/dest/"
+    outputPath = project.rootDir.getAbsolutePath() + "/output/"
+    nonConfusedJarName = 'DUI-lite-for-Android-' + rootProject.ext.android["sdkVersion"] + '-nonconfused.jar'
+    nonConfusednonScopeJarName = 'DUI-lite-for-Android-' + rootProject.ext.android["sdkVersion"] + '-nonconfused_noscope.jar'
+    proguard_NoScope = 'DUI-lite-for-Android-' + rootProject.ext.android["sdkVersion"] + '-proguard_noscope.jar'
+    confusedJarName = 'DUI-lite-SDK-for-Android-' + rootProject.ext.android["sdkVersion"] + '.jar'
+    nonConfusedJarPath = project.buildDir.absolutePath + '/libs/'
+    confusedJarPath = project.rootDir.getAbsolutePath() + '/' + demoDir + 'libs/'
+    finalName = 'DUI-lite-SDK-for-Android-' + rootProject.ext.android["sdkVersion"]
+    androidJar = ''
+    docZip = project.rootDir.getAbsolutePath() + "/api_doc.zip"
+}
+
+configurations {
+    okhttpConfig
+}
+
+
+android {
+    namespace 'com.hzx.aispeech'
+    compileSdkVersion rootProject.ext.android["compileSdk"]
+    buildToolsVersion rootProject.ext.android["buildTools"]
+    androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdk"]
+        targetSdkVersion rootProject.ext.android["targetSdk"]
+        versionCode 1
+        versionName rootProject.ext.android["sdkVersion"]
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "VERSION_DATE", "\"${rootProject.ext.versions["versionDate"]}\"")
+        buildConfigField("String", "SDK_VERSION_NUM", "\"${rootProject.ext.versions["sdkVersionNum"]}\"")
+    }
+    buildFeatures {
+        buildConfig true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false   //开启混淆
+            zipAlignEnabled false  //压缩优化
+        }
+
+        debug {
+            minifyEnabled false   //开启混淆
+            zipAlignEnabled false  //压缩优化
+            testCoverageEnabled true
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api project(path: ':lite_jni')
+    okhttpConfig 'com.squareup.okhttp3:okhttp:3.12.12'
+    // lite_jni.jar lite_jni_no_net.jar 在打包 jar 时使用
+    api fileTree(dir: 'libs', include: ['gourd_V1.11.jar', 'commons-collections4-4.0.jar'])
+    implementation configurations.okhttpConfig.dependencies
+
+}

@@ -1,0 +1,86 @@
+apply plugin: 'com.android.library'
+
+ext {
+    SDK_BASENAME = "lite_jni"
+    SDK_BASENAME_NO_NET = "lite_jni_no_net"
+    SDK_BASENAME_NO_SCOPE = "lite_jni_no_scope"
+    SDK_DESTINATION_PATH = "../android_lite_sdk/libs"
+    BuildParam_PATH = projectDir.getAbsolutePath() + "/src/main/java/com/aispeech/BuildParam.java"
+    /**
+     * sdk 是否不需要进行授权
+     * <ul>
+     *     <li>false 默认，正常授权</li>
+     *     <li>true 不需要授权，验证授权时直接给出授权通过 授权类型 ONLINE。
+     *     授权的3个请求都不会执行，可用本地功能，云端功能由于服务器鉴权不通过无法使用</li>
+     * </ul>
+     */
+    NO_AUTH = false
+    /**
+     * 试用授权有次数限制时会在本地保存次数，这个开关就是是否再加一个log记录每次次数的变化
+     */
+    TRAIL_AUTH_USED_TIMES_LOG = false
+    /**
+     * SDK是否进行本地的scope校验
+     * <ul>
+     *     <li>false 默认，正常校验</li>
+     *     <li>true 不需要校验，本地功能无授权可以正常使用。
+     *     因为DDS本地功能不进行scope的校验，这里对DDS不在进行scope的校验,
+     *     makeNoScopeJar.dependsOn 任务中已经将NO_SCOPE设置为true，无需手动修改</li>
+     * </ul>
+     */
+    NO_SCOPE = false
+}
+
+android {
+    namespace 'com.aispeech'
+    compileSdkVersion rootProject.ext.android["compileSdk"]
+    buildToolsVersion rootProject.ext.android["buildTools"]
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdk"]
+        targetSdkVersion rootProject.ext.android["targetSdk"]
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        buildConfigField("boolean", "NO_AUTH", String.valueOf(NO_AUTH))
+        buildConfigField("boolean", "NO_SCOPE", String.valueOf(NO_SCOPE))
+        buildConfigField("boolean", "TRAIL_AUTH_USED_TIMES_LOG", String.valueOf(TRAIL_AUTH_USED_TIMES_LOG))
+        buildConfigField("String", "VERSION_DATE", "\"${rootProject.ext.versions["versionDate"]}\"")
+        buildConfigField("String", "SO_VERSION", "\"${rootProject.ext.versions["soVersion"]}\"")
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE.MF'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    //dui vision sdk依赖于okhttp, 必须外部依赖或导入，否则报错
+    implementation 'com.squareup.okhttp3:okhttp:3.12.12'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}

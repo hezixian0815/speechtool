@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="ok">ok</string>
+    <string name="cancel">cancel</string>
+    <string name="permission_contacts_rationale">Contacts permissions are needed to demonstrate access.</string>
+
+    <string name="permission_read_phone_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_READ_PHONE_STATE</string>
+    <string name="permission_read_external_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_READ_EXTERNAL_STORAGE</string>
+    <string name="permission_write_external_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_WRITE_EXTERNAL_STORAGE</string>
+    <string name="permission_recode_audio_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_RECORD_AUDIO</string>
+    <string name="permission_read_contacts_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_READ_CONTACTS</string>
+
+
+    <string name="app_name">hzx_speech</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string-array name="tts_cn_res">
+        <!-- 标准音色 -->
+        <item>zhilingfa</item>
+        <item>gqlanf</item>
+        <item>hyanif</item>
+        <item>qianranf</item>
+        <!-- 精品音色 -->
+        <item>xijunma</item>
+        <item>lucyfa</item>
+        <item>gqlanfp</item>
+    </string-array>
+    <string-array name="tts_en_res">
+        <item>syn_ensnt_wysbrf_5M</item>
+    </string-array>
+
+    <string name="cloud_tts_res">合成资源类型</string>
+    <string name="cloud_tts_speed">语速</string>
+    <string name="cloud_tts_volume">音量</string>
+
+    <string-array name="cloud_tts_types">
+        <item>cn.sent.syn</item>
+        <item>en.syn</item>
+    </string-array>
+
+    <string name="cloud_tts_type">合成类型(中文或英文)</string>
+    <string name="local_tts_name">本地合成资源</string>
+    <string name="default_dialog_server">ws://s.api.aispeech.com</string>
+    <string name="default_dialog_res">aicar</string>
+
+    <string name="wakeup_word">你好小驰</string>
+    <string name="wakep_word_tip">注册时需要录音4次，开始录音--->你好小驰，反复4次</string>
+    <string name="delete_word">删除的唤醒词</string>
+    <string name="delete_register">删除的注册人</string>
+    <string name="local_hotwords_setUseContinuousRecognition">连续识别开启</string>
+
+    <string name="cloud_tts_engine_list">引擎集合</string>
+    <string name="cloud_texts_setting">文本设置</string>
+    <string name="cloud_tts_realtime">实时反馈</string>
+    <string name="cloud_tts_audiosetType">音频类型</string>
+    <string name="cloud_tts_MP3Quality">mp3码率设置</string>
+    <string name="cloud_tts_editSaveAudioPath">切换服务地址,情感必须使用v3地址</string>
+    <string name="cloud_tts_Enable">AEC健康检测</string>
+    <string name="cloud_tts_RecChannel">通道互换</string>
+    <string name="tts_model">model</string>
+    <string name="cloud_AecResource">AEC资源设置</string>
+    <string name="cloud_asr_dialect">方言</string>
+
+    <string name="sp_device_name_default_value">demo001</string>
+    <string name="sp_api_key_default_value">127537a77becd25e104f7e7161df8c00</string>
+    <string name="sp_product_id_default_value">279608105</string>
+    <string name="sp_product_key_default_value">c476883eb0cf3cdeca1c8ea1a524cc9f</string>
+    <string name="sp_product_secret_default_value">c28557cbf3998f1266a1b785a8691f54</string>
+
+
+    <string-array name="cloud_asr_dialect">
+        <item>普通话</item>
+        <item>四川话+普通话</item>
+        <item>广东话+普通话</item>
+        <item>上海话+普通话</item>
+        <item>山东话+普通话</item>
+    </string-array>
+
+</resources>
