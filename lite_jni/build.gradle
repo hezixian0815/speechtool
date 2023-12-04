@@ -79,6 +79,8 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     //dui vision sdk依赖于okhttp, 必须外部依赖或导入，否则报错
     implementation 'com.squareup.okhttp3:okhttp:3.12.12'
+    implementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'junit:junit:4.12'
 }
 
 tasks.withType(JavaCompile) {

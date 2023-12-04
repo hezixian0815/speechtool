@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     namespace 'com.hzx.speechtool'
-    compileSdk 28
+    compileSdk 33
     buildToolsVersion "28.0.3"
 
     defaultConfig {
@@ -15,28 +15,31 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-//    signingConfigs {
-//        release {
-//            storeFile file('../keystore/aispeech.jks')
-//            storePassword 'aispeech'
-//            keyAlias 'aispeech'
-//            keyPassword 'aispeech'
-//        }
-//        debug {
-//            storeFile file('../keystore/aispeech.jks')
-//        }
-//    }
+    signingConfigs {
+        speechtool {
+            storeFile file('../keystore/speechtool.jks')
+            storePassword '121380'
+            keyAlias 'speechtool'
+            keyPassword '121380'
+        }
+        aispeech {
+            storeFile file('../keystore/aispeech.jks')
+            storePassword 'aispeech'
+            keyAlias 'aispeech'
+            keyPassword 'aispeech'
+        }
+    }
 
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            signingConfig signingConfigs.release
+            signingConfig signingConfigs.speechtool
         }
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.speechtool
         }
     }
     compileOptions {
@@ -59,6 +62,11 @@ dependencies {
     implementation "com.android.support:support-v4:28.0.0"
     implementation "com.android.support:support-v13:28.0.0"
     implementation 'com.android.support:design:28.0.0'
+//    implementation 'androidx.test.ext:junit:1.1.5'
+//    implementation 'androidx.appcompat:appcompat:1.6.1'
+//    implementation 'com.google.android.material:material:1.9.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+//    androidTestImplementation 'junit:junit:4.12'
 
     //dui lite sdk依赖于 okhttp 必须外部依赖或导入，否则报错
     implementation 'com.squareup.okhttp3:okhttp:3.12.12'

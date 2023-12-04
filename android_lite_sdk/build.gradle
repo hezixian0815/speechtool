@@ -59,6 +59,8 @@ android {
 
 dependencies {
     api project(path: ':lite_jni')
+    implementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'junit:junit:4.12'
     okhttpConfig 'com.squareup.okhttp3:okhttp:3.12.12'
     // lite_jni.jar lite_jni_no_net.jar 在打包 jar 时使用
     api fileTree(dir: 'libs', include: ['gourd_V1.11.jar', 'commons-collections4-4.0.jar'])

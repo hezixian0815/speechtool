@@ -18,20 +18,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:padding="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:text="麦克风类型:"></TextView>
+        <Button
+            android:id="@+id/btn_auth"
+            android:padding="10dp"
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:onClick="auth"
+            android:text="授权"
+            tools:ignore="OnClick" />
 
-<!--        <Spinner-->
-<!--            android:id="@+id/spinner"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:minWidth="120dp"></Spinner>-->
     </LinearLayout>
 
     <LinearLayout
@@ -41,6 +39,7 @@
         android:gravity="center">
 
         <Button
+            android:id="@+id/btn_localAsr"
             android:padding="10dp"
             android:layout_width="300dp"
             android:layout_height="80dp"
@@ -55,6 +54,7 @@
         android:gravity="center">
 
         <Button
+            android:id="@+id/btn_cloudAsr"
             android:padding="10dp"
             android:layout_width="300dp"
             android:layout_height="80dp"
@@ -69,6 +69,7 @@
         android:gravity="center">
 
         <Button
+            android:id="@+id/btn_localHotwords"
             android:padding="10dp"
             android:layout_width="300dp"
             android:layout_height="80dp"
@@ -83,6 +84,7 @@
         android:gravity="center">
 
         <Button
+            android:id="@+id/btn_cloudHotwords"
             android:padding="10dp"
             android:layout_width="300dp"
             android:layout_height="80dp"
@@ -97,6 +99,7 @@
         android:gravity="center">
 
         <Button
+            android:id="@+id/btn_sspeAndWakeup"
             android:padding="10dp"
             android:layout_width="300dp"
             android:layout_height="80dp"
