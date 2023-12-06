@@ -16,12 +16,13 @@ import com.aispeech.DUILiteConfig;
 import com.aispeech.DUILiteSDK;
 import com.hzx.speechtool.R;
 import com.hzx.ui.CloudAsrActivity;
+import com.hzx.ui.CloudDmActivity;
 import com.hzx.util.AIPermissionRequest;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String TAG = "MainActivity";
-    private Button btn_localAsr,btn_cloudAsr;
+    private Button btn_localAsr,btn_cloudAsr,btn_cloudDm;
     private AIPermissionRequest mPermissionRequest;
     private static boolean haveAuth = false;
 
@@ -76,21 +77,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void initView(){
         btn_localAsr = findViewById(R.id.btn_localAsr);
         btn_cloudAsr = findViewById(R.id.btn_cloudAsr);
-        
+        btn_cloudDm = findViewById(R.id.btn_cloudDm);
+
 
         btn_localAsr.setOnClickListener(this);
         btn_cloudAsr.setOnClickListener(this);
+        btn_cloudDm.setOnClickListener(this);
 
 
     }
 
     @Override
     public void onClick(View v) {
+        if (haveAuth == false) {
+            showTip("请先授权！");
+            return;
+        }
         if (v == btn_localAsr) {
             
         } else if (v == btn_cloudAsr) {
-            Log.i("TAG", "onClick: " + "cloud");
+            Log.i("TAG", "onClick: " + "cloudAsr");
             Intent intent = new Intent(MainActivity.this, CloudAsrActivity.class);
+            startActivity(intent);
+        }else if (v == btn_cloudDm) {
+            Log.i("TAG", "onClick: " + "cloudDm");
+            Intent intent = new Intent(MainActivity.this, CloudDmActivity.class);
             startActivity(intent);
         }
 

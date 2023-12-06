@@ -39,6 +39,21 @@
         android:gravity="center">
 
         <Button
+            android:id="@+id/btn_sspeAndWakeup"
+            android:padding="10dp"
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:text="前段信号处理 + 唤醒"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
             android:id="@+id/btn_localAsr"
             android:padding="10dp"
             android:layout_width="300dp"
@@ -69,11 +84,11 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/btn_localHotwords"
+            android:id="@+id/btn_cloudDm"
             android:padding="10dp"
             android:layout_width="300dp"
             android:layout_height="80dp"
-            android:text="本地热词"/>
+            android:text="云端对话"/>
 
     </LinearLayout>
 
@@ -91,21 +106,5 @@
             android:text="云端热词"/>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:padding="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/btn_sspeAndWakeup"
-            android:padding="10dp"
-            android:layout_width="300dp"
-            android:layout_height="80dp"
-            android:text="前段信号处理 + 唤醒"/>
-
-    </LinearLayout>
-
 
 </LinearLayout>

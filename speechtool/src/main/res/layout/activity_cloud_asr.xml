@@ -14,10 +14,18 @@
         android:orientation="vertical">
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="20dp"
+            android:gravity="center_vertical"
+            android:text="识别结果如下：\n"/>
+
+        <TextView
             android:id="@+id/tv_asr_result"
             android:layout_width="match_parent"
-            android:layout_height="600dp"
-            android:text="识别结果如下：\n"/>
+            android:layout_height="500dp"
+            android:background="@drawable/shape_group_bg"
+            android:text=""/>
 
 
 
